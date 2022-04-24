@@ -1,6 +1,7 @@
 from DeckOfCards import *
 from random import *
 
+
 class Player:
     def __init__(self, playername: str, num_cards: int = 26):
         self.playername = playername
@@ -10,35 +11,44 @@ class Player:
         self.playerdeck = []
         self.mydeck = DeckOfCards()
 
+    def __str__(self):
+        return f"{self.playername} with {len(self.playerdeck)} cards"
+
     def set_hand(self):
-        for i in range(self.num_cards + 1):
+        while len(self.playerdeck) != self.num_cards:
             a = self.mydeck.deal_one()
             self.playerdeck.append(a)
-        return self.playerdeck
+        # return self.playerdeck
 
     def get_card(self):
         randchoice = choice(self.playerdeck)
-        self.playerdeck.remove(randchoice)
+
+        # self.playerdeck.remove(randchoice)
         return randchoice
 
     def add_card(self, card: Card):
-        for i in self.playerdeck:
-            if i == card:
-                self.playerdeck.remove(i)
-                self.playerdeck.append(card)
+        self.playerdeck.append(card)
 
-                break
-        # if card not in self.playerdeck:
-        #     self.playerdeck.append(card)
-        # return
 
 
 
 if __name__ == "__main__":
+    my_deck = DeckOfCards()
+    print(my_deck)
     p1 = Player("Natan", 20)
+    p2 = Player("Gavriel", 25)
+    print(p1.playerdeck)
+    print(p2.playerdeck)
+
     p1.set_hand()
-    print(p1.playerdeck)
-    print(p1.get_card())
-    print(p1.playerdeck)
+    p2.set_hand()
+    print("P1", p1.playerdeck)
+    print("Get Card", p1.get_card())
+    print(len(p1.playerdeck))
+    print("P1", p1.playerdeck)
+    print(len(p2.playerdeck))
+    print("P2", p2.playerdeck)
     p1.add_card(Card(11, "Diamonds"))
-    print(p1.playerdeck)
+    print("Add Card", p1.playerdeck)
+    print(p1)
+    print(p2)

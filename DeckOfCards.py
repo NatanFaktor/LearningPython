@@ -26,10 +26,8 @@ class DeckOfCards:
 if __name__ == "__main__":
     my_deck = DeckOfCards()
     print(my_deck)
-    # DeckOfCards.cards_shuffle(DeckOfCards())
     DeckOfCards.cards_shuffle(my_deck)
-    print(my_deck)
-    print(my_deck)
+    print("Shuffle", my_deck)
 
     print(DeckOfCards.deal_one(my_deck))
     print(my_deck)
