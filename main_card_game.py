@@ -3,34 +3,36 @@ from DeckOfCards import DeckOfCards
 from Card_Game import CardGame
 from Player import Player
 
-p1 = Player("Natan", 26)
-p2 = Player("Gavriel", 26)
-new = CardGame(p1, p2)
 
+new = CardGame("Natan", 20, "Gavriel", 20)
 
-print(p1.playerdeck)
-print(len(p1.playerdeck))
-print(p2.playerdeck)
-print(len(p2.playerdeck))
+print("Bank", DeckOfCards(), "\n")
+print(f"{new.player.playername}'s hand", new.player.playerdeck)
+print(len(new.player.playerdeck), "cards\n")
+print(f"{new.player2.playername}'s hand", new.player2.playerdeck)
+print(len(new.player2.playerdeck), "cards\n")
+print("Bank", DeckOfCards(), "\n")
 
-for i in range(-8):
-    a = p1.get_card()
-    b = p2.get_card()
-    print(f"{p1.playername} threw {a}")
-    print(f"{p2.playername} threw {b}")
+print("Starting Game!")
+for i in range(10):
+    print(f"round {i+1}")
+    a = new.player.get_card()
+    b = new.player2.get_card()
+    print(f"{new.player.playername} threw {a}")
+    print(f"{new.player2.playername} threw {b}")
     if a > b:
-        p1.add_card(b)
-        p2.playerdeck.remove(b)
-        print(f"{p1.playername} won this round\n")
+        new.player.add_card(b)
+        # p2.playerdeck.remove(b)
+        print(f"{new.player.playername} won this round\n")
     else:
-        p2.add_card(a)
-        p1.playerdeck.remove(a)
-        print(f"{p2.playername} won this round\n")
+        new.player2.add_card(a)
+        # p1.playerdeck.remove(a)
+        print(f"{new.player2.playername} won this round\n")
 new.get_winner()
-print(len(p1.playerdeck))
-print(p1.playerdeck)
-print(len(p2.playerdeck))
-print(p2.playerdeck)
+print(f"{new.player.playername} has {len(new.player.playerdeck)} cards")
+print(f"{new.player2.playername} has {len(new.player2.playerdeck)} cards")
+print(new.player.playerdeck)
+print(new.player2.playerdeck)
 # from Card_Game import *
 #
 # player1 = Player('natan', 26)
